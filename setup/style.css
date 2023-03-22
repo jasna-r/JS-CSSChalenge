@@ -1,0 +1,193 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  background: #ffffff;
+  margin: 15px;
+  width: 340px;
+}
+.accordion {
+  background: #e6ebff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.accordion-title {
+  color: #0033ff;
+  font-weight: 800;
+  font-size: 18px;
+  margin: 0;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+.form-control {
+  background-color: #ffffff;
+  border: 1px solid #d6dae4;
+  border-radius: 3px;
+  padding: 6px 12px;
+  height: 38px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+}
+
+input[type="radio"] {
+  margin: 0;
+  width: 15px;
+  height: 15px;
+}
+
+.radio-select {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.preview {
+  background: #f9fafd;
+  display: flex;
+  /* align-items: center;
+  justify-content: center; */
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.layout-placeholder {
+  padding: 10px;
+  color: #464b5b;
+  font-size: 18px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+ 
+}
+
+.card-container {
+  flex: 1 ;
+  width: 350px;
+  padding: 25px;
+  margin: 8px;
+  display: block;
+  border: 1px solid gray;
+}
+
+.card-header {
+  justify-content: space-between;
+  display: flex;
+}
+.profile-container {
+  display: flex;
+  justify-content: flex-start;
+}
+.profile-photo {
+  align-self: center;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  padding: 5px;
+}
+
+.profile-icon {
+  padding-left: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.social-icon {
+  height: 5vh;
+}
+
+.profile-data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.profile-data .name {
+  font-weight: 800;
+  margin: 0;
+}
+.date {
+  margin-top: 10px;
+  font-size: 0.875rem;
+}
+.likes {
+  padding: 8px;  
+}
+
+.like-icon {
+  margin-top: -3px;
+  margin-right: 10px;
+}
+.image-container {
+ display: flex;
+ justify-content: center;
+
+}
+.main-photo {
+  width: 470px;
+  height: 350px;
+  object-fit: fill;
+}
+
+.caption {  
+  font-size: 0.875rem;
+}
+.btn {
+  margin: auto;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.load-button {
+  align-items: center;
+  width: 150px;
+  padding: 16px;
+  background-color:#0081ff;
+  color: #f9fafd;  
+  cursor: pointer;  
+  border-radius: 3px;
+  border: 1px solid gray;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}
+
+
+
+
+
