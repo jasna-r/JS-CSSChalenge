@@ -2,23 +2,27 @@ document.addEventListener("DOMContentLoaded", () => {
   getJsonObject("./../data.json")
     .then((jsonObj) => {
       arrayOfKittens = jsonObj;
-      let stringOfAllCards = loadAllCards(arrayOfKittens);
-      // console.log(stringOfAllCards);
+      let stringOfAllCards = loadCards(arrayOfKittens, 0, cardIncrease);
       let layoutPlaceholder = document.getElementById("card-placeholder");
       layoutPlaceholder.innerHTML = stringOfAllCards;
+      if (arrayOfCards.length <= cardLimit) {
+        document.getElementById("load-more-button").style.display = "none";
+      }
     })
     .then(() => setLikeListener())
     .catch((error) => console.error(error));
 });
 
 var arrayOfKittens = null;
+var currentPage = 1;
+var cardIncrease = 4;
+var cardLimit = 0;
 
 function setLikeListener() {
-  
   const hearts = document.querySelectorAll(".like-icon");
   const likeCounts = document.querySelectorAll(".like-count");
-// console.log('hearts',hearts);
-// console.log('likeCounts',likeCounts);
+  // console.log('hearts',hearts);
+  // console.log('likeCounts',likeCounts);
 
   hearts.forEach((heart, index) => {
     let isLiked = false;
@@ -46,52 +50,52 @@ async function getJsonObject(path) {
   return jsonObj;
 }
 
-function loadSingleCard(cardObj,i) {
+function loadSingleCard(cardObj, i) {
   var stringCard = ` <div class="card">
-  <div class="card-header">
-    <div class="header-container">
-        <div class="profile-left-side">
-      <img
-        class="profile-photo"
-        src="${cardObj.profile_image}"
-      />
+    <div class="card-header">
+      <div class="header-container">
+          <div class="profile-left-side">
+        <img
+          class="profile-photo"
+          src="${cardObj.profile_image}"
+        />
 
-      <div class="profile-data">
-        <h5 class="profile-name">${cardObj.name}</h5>
-        <div class="profile-date">${cardObj.date}</div>
+        <div class="profile-data">
+          <h5 class="profile-name">${cardObj.name}</h5>
+          <div class="profile-date">${cardObj.date}</div>
+        </div>
       </div>
-    </div>
 
-      <div class="profile-social-icon">
-        <a href=""${cardObj.source_link}">
-          <img
-              class="social-icon"
-            src="../icons/${getSocialIconType(cardObj.source_type)}.svg"
-            alt="${cardObj.source_type}"
-            
-          />
-        </a>
+        <div class="profile-social-icon">
+          <a href=""${cardObj.source_link}">
+            <img
+                class="social-icon"
+              src="../icons/${getSocialIconType(cardObj.source_type)}.svg"
+              alt="${cardObj.source_type}"
+              
+            />
+          </a>
+        </div>
       </div>
-    </div>
 
-  </div>
-  <div class="image-container">
-    <img class="main-photo" src="${cardObj.image}" />
-  </div>
-  <div class="card-caption">
-    <p>
-    ${cardObj.caption}
-    </p>
-  </div>
-  <hr />
-  <div class="likes">
-  <img id="heart-${i}" class="like-icon" src="../icons/heart.svg" />
-  <span id="like-${i}" class="like-count">
-   ${cardObj.likes}
-   </span>
-   </div>
-</div>         
-`;
+    </div>
+    <div class="image-container">
+      <img class="main-photo" src="${cardObj.image}" />
+    </div>
+    <div class="card-caption">
+      <p>
+      ${cardObj.caption}
+      </p>
+    </div>
+    <hr />
+    <div class="likes">
+    <img id="heart-${i}" class="like-icon" src="../icons/heart.svg" />
+    <span id="like-${i}" class="like-count">
+     ${cardObj.likes}
+     </span>
+     </div>
+  </div>         
+ `;
   return stringCard;
 }
 
@@ -103,51 +107,63 @@ function getSocialIconType(source_type) {
   }
 }
 
-function loadAllCards(arrayOfCards) {
+function loadCards(arrayOfCards, start, end) {
   let concatCards = "";
-  for (let i = 0;i < 4 && i < arrayOfCards.length; i++) {
-    concatCards += loadSingleCard(arrayOfCards[i],i);
+  for (let i = start; i < end && i < arrayOfCards.length; i++) {
+    concatCards += loadSingleCard(arrayOfCards[i], i);
   }
+  cardLimit = end;
   return concatCards;
 }
 
+let stringOfAllCards = loadCards(arrayOfKittens, 0, cardLimit);
+
+function loadMoreCards() {
+  let currentCount = document.querySelectorAll(".card").length;
+  let newCards = "";
+  let remainingCards = arrayOfKittens.length - currentCount;
+  let cardsToLoad =
+    remainingCards >= cardIncrease ? cardIncrease : remainingCards;
+  for (let i = currentCount; i < currentCount + cardsToLoad; i++) {
+    newCards += loadSingleCard(arrayOfKittens[i], i);
+  }
+
+  let layoutPlaceholder = document.getElementById("card-placeholder");
+  layoutPlaceholder.innerHTML += newCards;
+
+  if (cardLimit >= arrayOfKittens.length) {
+    document.getElementById("load-more-button").style.display = "none";
+  }
+  setLikeListener();
+}
+
+const loadMoreButton = document.getElementById("load-more-button");
+
+loadMoreButton.addEventListener("click", function () {
+  loadMoreCards();
+});
 
 function toggleTheme() {
-  var elements = document.querySelectorAll('.card');
+  var elements = document.querySelectorAll(".card");
   var themeToggle = document.querySelector('input[name="theme"]:checked').value;
 
-  if (themeToggle === 'darkTheme') {
-    elements.forEach(function(element) {
-      element.style.background = 'black';
-      element.style.color = 'white';
+  if (themeToggle === "darkTheme") {
+    elements.forEach(function (element) {
+      element.style.background = "black";
+      element.style.color = "white";
     });
   } else {
-    elements.forEach(function(element) {
-      element.style.background = 'white';
-      element.style.color = 'black';
+    elements.forEach(function (element) {
+      element.style.background = "white";
+      element.style.color = "black";
     });
   }
 }
 
 var themeRadios = document.querySelectorAll('input[name="theme"]');
-themeRadios.forEach(function(radio) {
-  radio.addEventListener('change', toggleTheme);
+themeRadios.forEach(function (radio) {
+  radio.addEventListener("change", toggleTheme);
 });
-
-// const loadMoreButton = document.getElementById("load-button");
-// const cardLimit=20;
-// const cardIncrease=4;
-// const pageCount = Math.ceil(cardLimit / cardIncrease);
-// let currentPage = 1;
-
-// cardTotalElem.innerHTML = cardLimit;
-
-// const handleButtonStatus = () => {
-//   if (pageCount === currentPage) {
-//     loadMoreButton.classList.add("disabled");
-//     loadMoreButton.setAttribute("disabled", true);
-//   }
-// };
 
 // const addCards = (pageIndex) => {
 //   currentPage = pageIndex;
@@ -157,14 +173,14 @@ themeRadios.forEach(function(radio) {
 //   const startRange = (pageIndex - 1) * cardIncrease;
 //   const endRange =
 //     pageIndex * cardIncrease > cardLimit ? cardLimit : pageIndex * cardIncrease;
-  
+
 //   cardCountElem.innerHTML = endRange;
 
 //   for (let i = startRange + 1; i <= endRange; i++) {
 //     createCard(i);
 //   }
-// };
 
-// loadMoreButton.addEventListener("click", () => {
-//   addCards(currentPage + 1);
-// });
+//   cardLimit += cardIncrease;
+//   let layoutPlaceholder = document.getElementById("card-placeholder");
+//   layoutPlaceholder.innerHTML += loadAllCards(arrayOfKittens.slice(cardLimit - cardIncrease, cardLimit));
+// };
