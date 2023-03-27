@@ -81,12 +81,13 @@ function loadSingleCard(cardObj, i) {
     </div>
     <div class="image-container">
       <img class="main-photo" src="${cardObj.image}" />
-    </div>
-    <div class="card-caption">
+      <div class="card-caption">
       <p>
       ${cardObj.caption}
       </p>
     </div>
+    </div>
+   
     <hr />
     <div class="likes">
     <img id="heart-${i}" class="like-icon" src="../icons/heart.svg" />
