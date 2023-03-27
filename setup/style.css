@@ -1,192 +1,222 @@
+* {
+  box-sizing: border-box;
+}
 body {
-  padding: 0;
-  margin: 0;
-  font-family: Roboto, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
 }
 
 .container {
-  display: flex;
-  height: 100vh;
+    display: flex;
+    height: 100vh;
 }
 
 .sidebar {
-  background: #ffffff;
-  margin: 15px;
-  width: 340px;
-}
-.accordion {
-  background: #e6ebff;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  padding: 15px;
-}
-
-.accordion-title {
-  color: #0033ff;
-  font-weight: 800;
-  font-size: 18px;
-  margin: 0;
-}
-
-.label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-input {
-  box-sizing: border-box;
-}
-
-.form-control {
-  background-color: #ffffff;
-  border: 1px solid #d6dae4;
-  border-radius: 3px;
-  padding: 6px 12px;
-  height: 38px;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-label {
-  font-size: 14px;
-}
-
-input[type="radio"] {
-  margin: 0;
-  width: 15px;
-  height: 15px;
-}
-
-.radio-select {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+    background: #ffffff;
+    margin: 15px;
+    width: 340px;
 }
 
 .preview {
-  background: #f9fafd;
-  display: flex;
-  /* align-items: center;
-  justify-content: center; */
-  flex-wrap: wrap;
-  width: 100%;
+    background: #f9fafd;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    width: 100%;
 }
 
 .layout-placeholder {
-  padding: 10px;
-  color: #464b5b;
-  font-size: 18px;
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  flex-wrap: wrap;
- 
+    color: #464b5b;
+    font-size: 18px;
 }
 
-.card-container {
-  flex: 1 ;
-  width: 350px;
-  padding: 25px;
-  margin: 8px;
-  display: block;
-  border: 1px solid gray;
+.accordion {
+    background: #e6ebff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
 }
 
-.card-header {
-  justify-content: space-between;
-  display: flex;
-}
-.profile-container {
-  display: flex;
-  justify-content: flex-start;
-}
-.profile-photo {
-  align-self: center;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  padding: 5px;
+.accordion-title {
+    color: #0033ff;
+    font-weight: 800;
+    font-size: 18px;
+    margin: 0;
 }
 
-.profile-icon {
-  padding-left: 50px;
-  display: flex;
-  align-items: center;
+.label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.social-icon {
-  height: 5vh;
+input {
+    box-sizing: border-box;
 }
 
-.profile-data {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 5px;
-  margin-top: 5px;
+.form-control {
+    background-color: #ffffff;
+    border: 1px solid #d6dae4;
+    border-radius: 3px;
+    padding: 6px 12px;
+    height: 38px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.profile-data .name {
-  font-weight: 800;
-  margin: 0;
-}
-.date {
-  margin-top: 10px;
-  font-size: 0.875rem;
-}
-.likes {
-  padding: 8px;  
+label {
+    font-size: 14px;
 }
 
-.like-icon {
-  margin-top: -3px;
-  margin-right: 10px;
-}
-.image-container {
- display: flex;
- justify-content: center;
-
-}
-.main-photo {
-  width: 470px;
-  height: 350px;
-  object-fit: fill;
+input[type="radio"] {
+    margin: 0;
+    width: 15px;
+    height: 15px;
 }
 
-.caption {  
-  font-size: 0.875rem;
-}
-.btn {
-  margin: auto;
-  padding: 16px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.radio-select {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.load-button {
-  align-items: center;
-  width: 150px;
-  padding: 16px;
-  background-color:#0081ff;
-  color: #f9fafd;  
-  cursor: pointer;  
-  border-radius: 3px;
-  border: 1px solid gray;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
+.card-box {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns:  1fr;
+  
+  /* padding-left: 60px; */
+  
+}
+@media (min-width: 768px) {
+.card-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; 
+  /* padding-left: 60px; */
+  
+}
+  
+}
+
+.card {
+    padding: 1.5em;
+    margin: 2vh;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: start;
+  }
+  
+  .card-header {
+    display: flex;
+  }
+  .header-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 5px;
+    margin: 0 auto;
+  }
+  .profile-photo {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+  }
+  .profile-left-side {
+    display: flex;
+    /* margin-right: 80px; */
+  }
+  .profile-social-icon {
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icon {
+    height: 30px;
+  }
+  
+  .profile-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  .profile-data .profile-name {
+    font-weight: 800;
+  }
+  .profile-name {
+    margin: auto;
+    padding-right: 50px;
+  }
+  .profile-date {
+    margin-bottom: 10px;
+    font-size: 0.875rem;
+  }
+  .likes {
+    padding-top: 8px;
+  }
+
+  .like-icon {
+    margin-top: -3px;
+    margin-right: 10px;
+  }
+
+  .main-photo {
+   width: 100%;
+  }
+  
+  .card-caption {
+    font-size: 0.875rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#464b5b;
+    height: 1px;
+  }
+
+  .btn {
+    margin: auto;
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .load-button {
+    align-items: center;
+    width: 150px;
+    padding: 16px;
+    background-color:#0081ff;
+    color: #f9fafd;  
+    cursor: pointer;  
+    border-radius: 3px;
+    border: 1px solid gray;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+  }
+  
 
 
 

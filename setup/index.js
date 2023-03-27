@@ -47,46 +47,51 @@ async function getJsonObject(path) {
 }
 
 function loadSingleCard(cardObj,i) {
-  var stringCard = `          
-    <div class="card-container">
-      <div class="card-header">
-        <div class="profile-container">
-          <img
-            class="profile-photo"
-            src="${cardObj.profile_image}"
-          />
+  var stringCard = ` <div class="card">
+  <div class="card-header">
+    <div class="header-container">
+        <div class="profile-left-side">
+      <img
+        class="profile-photo"
+        src="${cardObj.profile_image}"
+      />
 
-          <div class="profile-data">
-            <p class="name">${cardObj.name}</p>
-            <p class="date">${cardObj.date}</p>
-          </div>
-        
-        </div>
-        <div class="profile-icon">
-          <a href="${cardObj.source_link}">
-            <img
-              src="../icons/${getSocialIconType(cardObj.source_type)}.svg"
-              alt="${cardObj.source_type}"
-              class="social-icon"
-            />
-          </a>
-        </div>
-      
+      <div class="profile-data">
+        <h5 class="profile-name">${cardObj.name}</h5>
+        <div class="profile-date">${cardObj.date}</div>
       </div>
-      <div class="image-container">
-				<img class="main-photo" src="${cardObj.image}"/>
-			  </div>
-            <div class="caption">
-              <p>
-               ${cardObj.caption}
-              </p>
-            </div>
-            <hr />
-            <div class="likes">
-            <img id="heart-${i}" class="like-icon" src="./../icons/heart.svg" />
-            <span id="like-${i}" class="like-count">${cardObj.likes}</span>
-            </div>
-          </div>`;
+    </div>
+
+      <div class="profile-social-icon">
+        <a href=""${cardObj.source_link}">
+          <img
+              class="social-icon"
+            src="../icons/${getSocialIconType(cardObj.source_type)}.svg"
+            alt="${cardObj.source_type}"
+            
+          />
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <div class="image-container">
+    <img class="main-photo" src="${cardObj.image}" />
+  </div>
+  <div class="card-caption">
+    <p>
+    ${cardObj.caption}
+    </p>
+  </div>
+  <hr />
+  <div class="likes">
+  <img id="heart-${i}" class="like-icon" src="../icons/heart.svg" />
+  <span id="like-${i}" class="like-count">
+   ${cardObj.likes}
+   </span>
+   </div>
+</div>         
+`;
   return stringCard;
 }
 
@@ -108,7 +113,7 @@ function loadAllCards(arrayOfCards) {
 
 
 function toggleTheme() {
-  var elements = document.querySelectorAll('.card-container');
+  var elements = document.querySelectorAll('.card');
   var themeToggle = document.querySelector('input[name="theme"]:checked').value;
 
   if (themeToggle === 'darkTheme') {
