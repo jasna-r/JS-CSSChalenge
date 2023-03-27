@@ -105,7 +105,7 @@ function getSocialIconType(source_type) {
 
 function loadAllCards(arrayOfCards) {
   let concatCards = "";
-  for (let i = 0; i < arrayOfCards.length; i++) {
+  for (let i = 0;i < 4 && i < arrayOfCards.length; i++) {
     concatCards += loadSingleCard(arrayOfCards[i],i);
   }
   return concatCards;
