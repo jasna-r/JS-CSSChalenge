@@ -165,23 +165,3 @@ var themeRadios = document.querySelectorAll('input[name="theme"]');
 themeRadios.forEach(function (radio) {
   radio.addEventListener("change", toggleTheme);
 });
-
-// const addCards = (pageIndex) => {
-//   currentPage = pageIndex;
-
-//   handleButtonStatus();
-
-//   const startRange = (pageIndex - 1) * cardIncrease;
-//   const endRange =
-//     pageIndex * cardIncrease > cardLimit ? cardLimit : pageIndex * cardIncrease;
-
-//   cardCountElem.innerHTML = endRange;
-
-//   for (let i = startRange + 1; i <= endRange; i++) {
-//     createCard(i);
-//   }
-
-//   cardLimit += cardIncrease;
-//   let layoutPlaceholder = document.getElementById("card-placeholder");
-//   layoutPlaceholder.innerHTML += loadAllCards(arrayOfKittens.slice(cardLimit - cardIncrease, cardLimit));
-// };
